@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card:hover > .buy {
+    display: grid;
+}
+
+.speed {
+    --fa-animation-duration: 1s;
+}
