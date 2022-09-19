@@ -7,30 +7,30 @@ const SecondaryLayout = () => {
   const [navExpanded, setNavExpanded] = useState(false);
 
   return (
-    <section className=" bg-primary-light-30 relative  ">
-      <div className=" z-[1002] bg-primary-light-30 items-center flex border-b border-primary-red-60 w-full sm:hidden h-12  ">
+    <section className=" relative  ">
+      <div className=" z-[1001] bg-light-sky-blue items-center flex border-b border-navy-blue w-full sm:hidden sticky top-0 left-0 right-0 h-16  ">
         <Link
           to="/"
-          className={" text-xl font-bold text-primary-red-60 my-8 w-fit ml-6  "}
+          className={" text-xl font-bold text-navy-blue w-fit ml-6  "}
         >
           Auto Mart
         </Link>
       </div>
 
       <button
-        className={` fixed z-[1001] w-fit h-fit right-8 top-[3.7rem] sm:hidden p-4 `}
+        className={` fixed z-[1002] w-fit h-fit right-8 top-[.5rem] sm:hidden p-2 `}
         onClick={() => setNavExpanded(!navExpanded)}
       >
         <i
           className={`a far ${
             !navExpanded ? "fa-bars" : "fa-close"
-          }  text-4xl text-primary-red-60 `}
+          }  text-3xl text-navy-blue `}
         />
       </button>
 
       <div className="  grid sm:grid-cols-[12.5rem_auto] relative ">
         <Navbar
-          extraStyle=" absolute sm:block top-0 w-[16rem] min-h-[calc(100vh-3rem)] sm:min-h-[100vh] sm:w-[12.5rem] sm:col-start-1 sm:col-end-2 bg-primary-red-60 "
+          extraStyle=" absolute sm:block top-0 bottom-0 w-[16rem] min-h-[100vh] sm:min-h-[100vh] sm:w-[12.5rem] sm:col-start-1 sm:col-end-2 bg-navy-blue "
           navState={navExpanded}
           setNavExpanded={setNavExpanded}
         />

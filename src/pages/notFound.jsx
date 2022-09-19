@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className=" absolute top-[50%] translate-y-[-50%] w-full min-h-[80vh] text-primary-red-60 flex flex-col justify-center items-center ">
+    <div className=" absolute top-[50%] translate-y-[-50%] w-full min-h-[80vh] text-navy-blue flex flex-col justify-center items-center ">
 
       <div className=" flex items-center mb-2 ">
-        <span className=" text-5xl pr-2 mr-2 font-semibold border-r-2 border-solid border-primary-red-60 ">
+        <span className=" text-5xl pr-2 mr-2 font-semibold border-r-2 border-solid border-navy-blue ">
           404
         </span>
         <span className=" text-2xl ">Page Not Found</span>
@@ -16,7 +16,7 @@ const NotFound = () => {
       
       <Link
         to="/"
-        className=" mt-8 border-2 border-solid border-primary-red-60 px-4 py-2 rounded-md "
+        className=" mt-8 border-2 border-solid border-navy-blue px-4 py-2 rounded-md "
       >
         Back to Home
       </Link>

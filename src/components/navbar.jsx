@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/user.context";
+import { useUser } from "../contexts/user.context";
 
 const Navbar = ({ extraStyle, navState, setNavExpanded }) => {
-  const { user, saveUser } = useContext(UserContext);
+  const { user, saveUser } = useUser();
   const navigate = useNavigate();
 
   function logout() {
@@ -17,7 +17,7 @@ const Navbar = ({ extraStyle, navState, setNavExpanded }) => {
 
   return (
     <section
-      className={` sm:bg-primary-red-60 pl-4 z-[1001] sm:relative  transition-all duration-300 ${extraStyle} ${navState ? "translate-x-0" : "translate-x-[-100%] sm:translate-x-0"}`}
+      className={` sm:bg-navy-blue z-[1000] sm:relative  transition-all duration-300 ${extraStyle} ${navState ? "translate-x-0" : "translate-x-[-100%] sm:translate-x-0"}`}
     >
       <div className=" w-fit justify-center ml-6 my-8 hidden sm:flex ">
         <Link
@@ -30,14 +30,14 @@ const Navbar = ({ extraStyle, navState, setNavExpanded }) => {
         </Link>
       </div>
 
-      <div className="  sm:h-fit bg-primary-red-60 sm:bg-transparent flex flex-col pt-[10rem] sm:fixed left-10 w-[10rem] ">
+      <div className="  sm:h-fit bg-navy-blue sm:bg-transparent flex flex-col pt-[10rem] fixed left-6 w-[10rem] ">
         <NavLink
           to={"/marketplace"}
           className={({ isActive }) =>
             `  mb-8 px-4 py-2  ${
               isActive
-                ? "text-primary-red-60 bg-primary-light-30 rounded-lg sm:rounded-l-lg font-semibold "
-                : " bg-primary-red-30 text-primary-light-30 rounded-lg mr-2 hover:bg-white/40 "
+                ? "text-navy-blue bg-light-sky-blue rounded-lg sm:rounded-l-lg font-semibold "
+                : " bg-navy-blue text-light-sky-blue rounded-lg  hover:bg-white/40 "
             }  `
           }
           onClick={()=>setNavExpanded(false)}
@@ -51,8 +51,8 @@ const Navbar = ({ extraStyle, navState, setNavExpanded }) => {
           className={({ isActive }) =>
             `  mb-8 px-4 py-2  ${
               isActive
-                ? "text-primary-red-60 bg-primary-light-30 rounded-lg sm:rounded-l-lg font-semibold "
-                : " bg-primary-red-30 text-primary-light-30 rounded-lg mr-2 hover:bg-white/40 "
+                ? "text-navy-blue bg-light-sky-blue rounded-lg sm:rounded-l-lg font-semibold "
+                : " bg-navy-blue text-light-sky-blue rounded-lg  hover:bg-white/40 "
             }  `
           }
           onClick={()=>setNavExpanded(false)}
@@ -66,8 +66,8 @@ const Navbar = ({ extraStyle, navState, setNavExpanded }) => {
           className={({ isActive }) =>
             `  mb-8 px-4 py-2  ${
               isActive
-                ? "text-primary-red-60 bg-primary-light-30 rounded-lg sm:rounded-l-lg font-semibold "
-                : " bg-primary-red-30 text-primary-light-30 rounded-lg mr-2 hover:bg-white/40 "
+                ? "text-navy-blue bg-light-sky-blue rounded-lg sm:rounded-l-lg font-semibold "
+                : " bg-navy-blue text-light-sky-blue rounded-lg  hover:bg-white/40 "
             }  `
           }
           onClick={()=>setNavExpanded(false)}
@@ -77,7 +77,7 @@ const Navbar = ({ extraStyle, navState, setNavExpanded }) => {
         </NavLink>
 
         <button
-          className="  mb-8 px-4 flex items-center py-2 bg-primary-red-30 text-primary-light-30 rounded-lg mr-2 hover:bg-white/40  "
+          className="  mb-8 px-4 flex items-center py-2 bg-navy-blue text-light-sky-blue rounded-lg  hover:bg-white/40  "
           onClick={() => logout()}
         >
           <i className="fa far fa-sign-out mr-4 " />

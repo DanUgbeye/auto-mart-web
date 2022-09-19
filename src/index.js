@@ -17,11 +17,14 @@ import Adverts from "./layouts/adverts";
 import UserAdverts from "./pages/userAdverts";
 import UserContextProvider from "./contexts/user.context";
 import MarketPlaceLayout from "./layouts/marketPlaceLayout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserContextProvider>
+      <ToastContainer position="top-right" closeOnClick theme="light" />
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />

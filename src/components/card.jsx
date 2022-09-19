@@ -5,7 +5,7 @@ const Card = ({ car }) => {
   return (
     <Link
       to={`buy/${car.id}`}
-      className=" relative bg-primary-light-60 w-full max-h-[20rem] max-w-md mx-auto h-fit overflow-hidden flex flex-col rounded-md shadow-[0px_0px_10px] hover:shadow-[0px_0px_25px] hover:scale-105 shadow-gray-600/60 hover:shadow-gray-600/60 card "
+      className=" relative bg-light-sky-blue w-full max-h-[20rem] max-w-[300px] mx-auto h-fit overflow-hidden flex flex-col rounded-md shadow-[0px_0px_10px] hover:shadow-[0px_0px_25px] hover:scale-105 transition ease-in-out duration-150 shadow-gray-600/60 hover:shadow-gray-600/60 card "
     >
       {car.image ? (
         <img
@@ -14,12 +14,12 @@ const Card = ({ car }) => {
           className=" w-full min-h-[10rem] aspect-auto "
         />
       ) : (
-        <div className=" bg-primary-red-60 w-full min-h-[10rem] "></div>
+        <div className=" bg-navy-blue w-full min-h-[10rem] "></div>
       )}
 
       {/* <div className=" absolute w-full h-full hidden bg-slate-500/10 text-white/80 tracking-widest text-3xl place-items-center buy "></div> */}
 
-      <div id="car-desc" className=" m-4 text-primary-red-90 ">
+      <div id="car-desc" className=" m-4 text-navy-blue-90 ">
         <div className=" flex justify-between  ">
           <div className=" text-lg font-semibold ">
             <span className="  ">{car.manufacturer}</span>{" "}

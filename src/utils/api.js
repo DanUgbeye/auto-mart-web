@@ -5,7 +5,7 @@ class API {
   constructor(url) {
     this.axios = axios.create({
       baseURL: url,
-      timeout: 10000,
+      timeout: 15000,
     });
   }
 
@@ -13,180 +13,156 @@ class API {
     this.token = token;
   }
 
-  async login(body) {
+  handleError(err) {
+    if (!err.response || !err.response.data || !err.response.data) {
+      throw err;
+    }
+    throw new Error(err.response.data.message);
+  }
+
+  async login(body, { signal }) {
     const path = "auth/login";
     const user = this.axios
-      .post(path, body)
-      .then((res) => res.data.data)
+      .post(path, body, { signal })
+      .then((res) => {
+        return res.data.data;
+      })
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async signup(body) {
+  async signup(body, { signal }) {
     const path = "auth/signup";
     const user = this.axios
-      .post(path, body)
+      .post(path, body, { signal })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async getUser(id) {
+  async getUser(id, { signal }) {
     const path = `user/${id}`;
     const user = this.axios
       .post(path, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
-        }
+        },
+        signal,
       })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async updateUser(id, body, token) {
+  async updateUser(id, body, { signal }) {
     const path = `user/${id}`;
     const user = this.axios
       .patch(path, body, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
         },
+        signal,
       })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async deleteUser(id, token) {
+  async deleteUser(id, { signal }) {
     const path = `user/${id}`;
     const user = this.axios
       .delete(path, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
         },
+        signal,
       })
-      .then((res) => (res.data.status === "success" && true))
+      .then((res) => res.data.status === "success" && true)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async getCar(id) {
+  async getCar(id, { signal }) {
     const path = `car/${id}`;
     const user = this.axios
-      .get(path)
+      .get(path, { signal })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async getCarsForUser(id, token) {
+  async getCarsForUser(id, { signal }) {
     const path = `cars/user/${id}`;
     const user = this.axios
       .get(path, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
         },
+        signal,
       })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async getAllCars(token) {
+  async getAllCars({ signal }) {
     const path = `cars`;
     const user = this.axios
       .get(path, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
         },
+        signal,
       })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async createCarAdvert(body, token) {
+  async createCarAdvert(body, { signal }) {
     const path = "car/";
     const user = this.axios
       .post(path, body, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
         },
+        signal,
       })
       .then((res) => res.data.data)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
 
-  async deleteCarAdvert(id, token) {
+  async deleteCarAdvert(id, { signal }) {
     const path = `car/${id}`;
     const user = this.axios
       .delete(path, {
         headers: {
           authorization: `Bearer ${this.token ? this.token : "no token"}`,
         },
+        signal,
       })
-      .then((res) => (res.data.status === "success" && true))
+      .then((res) => res.data.status === "success" && true)
       .catch((err) => {
-        if(!err.response.data.status) throw err;
-        if (err.response.data.status && err.response.data.status === "error") {
-          throw new Error(err.response.data.message);
-        }
-        throw err;
+        this.handleError(err);
       });
     return user;
   }
