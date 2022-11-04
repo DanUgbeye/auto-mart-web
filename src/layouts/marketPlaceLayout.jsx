@@ -1,19 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Heading from "../components/heading";
 
 const MarketPlaceLayout = () => {
   return (
-    <section className=" relative min-h-[calc(100vh-3rem)] sm:min-h-[100vh] ">
-      <Heading
-        heading={"Market Place"}
-        supportText={"find cars listed for sale here"}
-        extraStyle={
-          " px-8 py-2 text-primary-red-60 sticky top-0 left-0 right-0 z-[1000] bg-primary-light-30 shadow-black/10 shadow-md relative "
-        }
-        headingStyle={" text-4xl mb-2  "}
-        supportTextStyle={" text-lg "}
-      />
+    <section className=" relative min-h-[100vh] sm:min-h-[100vh] ">
+      <div className=" py-8 relative max-w-lg mx-auto md:mx-8 lg:mx-12 lg:max-w-none flex gap-12 items-center ">
+        <h3 className=" text-4xl font-medium md:mx-8 lg:mx-12 text-center w-full text-navy-blue ">
+          Mart
+        </h3>
+      </div>
 
       <Outlet />
     </section>
