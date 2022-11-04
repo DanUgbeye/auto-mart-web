@@ -1,6 +1,5 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Heading from "../components/heading";
 
 const Adverts = () => {
   return (
